@@ -5,7 +5,7 @@ import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
 import SimpleBackdrop from "../../components/BackDrop/Backdrop";
 import Genres from "../../components/Genre/Genre";
-import useGenre from "../../customHooks/useGenre"
+import useGenre from "../../customHooks/useGenre";
 
 const Movies = () => {
   const [genres, setGenres] = useState([]);
@@ -16,11 +16,12 @@ const Movies = () => {
   const genreToId = useGenre(selectedGenres);
   const media_type = "movie";
 
-  const fetchData = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/${media_type}?api_key=433b72bbcc8a78f3b6d6d48b30491675&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&page=${page}&with_genres=${genreToId}`
-    );
+  const fetchData = async() => {
+    // fetch(`http://localhost:3000/movies/get?page=1`)
+    // .then(res=>res.json())
+    // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
 
+    const { data } = await axios.get(`http://localhost:3000/movies/get?page=${page}`)
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
@@ -29,9 +30,10 @@ const Movies = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
+    setlist([])
     fetchData();
     // eslint-disable-next-line
-  }, [genreToId, page]);
+  }, [page]);
 
   return (
     <>
@@ -64,6 +66,6 @@ const Movies = () => {
       </div>
     </>
   );
-}
+};
 
 export default Movies;
