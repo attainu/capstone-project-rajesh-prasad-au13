@@ -4,8 +4,8 @@ import { searchMoviesByName, searchMoviesByGenre, searchMoviesByVoteAverage, get
 
 const movieRoutes = express.Router();
 
-movieRoutes.get("/get/:name", searchMoviesByName);
-movieRoutes.get("/get/:ids", searchMoviesByGenre);
+// movieRoutes.get("/get/:name", searchMoviesByName);
+// movieRoutes.get("/get/:ids", searchMoviesByGenre);
 movieRoutes.get("/get/:vote_average", searchMoviesByVoteAverage);
 movieRoutes.get("/get", getMovies);
 movieRoutes.post("/post", addMoviesByPage);

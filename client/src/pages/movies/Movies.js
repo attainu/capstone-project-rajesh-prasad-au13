@@ -20,11 +20,12 @@ const Movies = () => {
     // fetch(`http://localhost:3000/movies/get?page=1`)
     // .then(res=>res.json())
     // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
-
-    const { data } = await axios.get(`http://localhost:3000/movies/get?page=${page}`)
+    console.log({genreToId})
+    const { data } = await axios.get(`http://localhost:3000/movies/get?page=${page}&genre=${genreToId}`)
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
+      console.log({list})
     }, 500);
   };
 
@@ -33,7 +34,7 @@ const Movies = () => {
     setlist([])
     fetchData();
     // eslint-disable-next-line
-  }, [page]);
+  }, [page,genreToId]);
 
   return (
     <>
