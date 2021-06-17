@@ -16,20 +16,25 @@ function Series() {
   const genreToId = useGenre(selectedGenres);
   const media_type = "tv";
 
-  const fetchTrending = async () => {
+  const fetchSeries = async () => {
+    // fetch(`http://localhost:3000/movies/get?page=1`)
+    // .then(res=>res.json())
+    // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
+    console.log({ genreToId });
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/${media_type}?api_key=433b72bbcc8a78f3b6d6d48b30491675&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate&page=${page}&with_genres=${genreToId}`
+      `http://localhost:3000/series/get?page=${page}&genre=${genreToId}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
+      console.log({ list });
     }, 500);
   };
 
   useEffect(() => {
     window.scroll(0, 0);
     setlist([]);
-    fetchTrending();
+    fetchSeries();
     // eslint-disable-next-line
   }, [genreToId, page]);
 
@@ -60,8 +65,10 @@ function Series() {
         ) : (
           <SimpleBackdrop open={true} />
         )}
-        <CustomPagination setPage={setPage} totalPages={totalPages} />
       </div>
+        <div className="pagination">
+          <CustomPagination setPage={setPage} totalPages={totalPages} />
+        </div>
     </>
   );
 }

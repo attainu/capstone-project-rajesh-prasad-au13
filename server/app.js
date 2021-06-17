@@ -3,13 +3,17 @@ const app = express();
 import cors from "cors";
 const port = process.env.PORT || 3000;
 import connect from "./db/db.js";
-import movieRoutes from "./routes/moviesRoutes.js";
 connect();
+import movieRoutes from "./routes/moviesRoutes.js";
+import seriesRoutes from "./routes/seriesRoutes.js"
+import trendingTodayRoutes from "./routes/trendingTodayRoutes.js"
 
 app.use(express.json());
 app.use(cors());
 
+app.use("/series", seriesRoutes);
 app.use("/movies", movieRoutes);
+app.use("/trending", trendingTodayRoutes);
 
 app.listen(port, () => {
     console.log(`Server is running on ${port}`);

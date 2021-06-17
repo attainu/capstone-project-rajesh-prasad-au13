@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import "./Movies.css";
 import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
 import SimpleBackdrop from "../../components/BackDrop/Backdrop";
@@ -16,25 +15,27 @@ const Movies = () => {
   const genreToId = useGenre(selectedGenres);
   const media_type = "movie";
 
-  const fetchData = async() => {
+  const fetchData = async () => {
     // fetch(`http://localhost:3000/movies/get?page=1`)
     // .then(res=>res.json())
     // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
-    console.log({genreToId})
-    const { data } = await axios.get(`http://localhost:3000/movies/get?page=${page}&genre=${genreToId}`)
+    console.log({ genreToId });
+    const { data } = await axios.get(
+      `http://localhost:3000/movies/get?page=${page}&genre=${genreToId}`
+    );
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
-      console.log({list})
+      console.log({ list });
     }, 500);
   };
 
   useEffect(() => {
     window.scroll(0, 0);
-    setlist([])
+    setlist([]);
     fetchData();
     // eslint-disable-next-line
-  }, [page,genreToId]);
+  }, [page, genreToId]);
 
   return (
     <>
@@ -48,23 +49,25 @@ const Movies = () => {
         setPage={setPage}
       />
       <div className="title">
-        {list.length !== 0 ? (
-          list.map(l => (
-            <Card
-              key={l.id}
-              id={l.id}
-              poster={l.poster_path}
-              title={l.title || l.name}
-              date={l.first_air_date || l.release_date}
-              media_type={media_type}
-              vote_average={l.vote_average}
-            />
-          ))
-        ) : (
-          <SimpleBackdrop open={true} />
-        )}
-        <CustomPagination setPage={setPage} totalPages={totalPages} />
+          {list.length !== 0 ? (
+            list.map(l => (
+              <Card
+                key={l.id}
+                id={l.id}
+                poster={l.poster_path}
+                title={l.title || l.name}
+                date={l.first_air_date || l.release_date}
+                media_type={media_type}
+                vote_average={l.vote_average}
+              />
+            ))
+          ) : (
+            <SimpleBackdrop open={true} />
+          )}
       </div>
+        <div className="pagination">
+          <CustomPagination setPage={setPage} totalPages={totalPages} />
+        </div>
     </>
   );
 };

@@ -11,4 +11,5 @@ const connectDB = async () => {
     });
     console.log("CONNECTED TO MONGOdb ATLAS");
 };
+
 export default connectDB;

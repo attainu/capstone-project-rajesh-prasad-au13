@@ -23,7 +23,7 @@ const Genres = ({
         setPage(1);
       };
   const getGenres = async () => {
-    //printing all genres
+    //for printing all genres on top
     const { data } = await axios.get(
         `https://api.themoviedb.org/3/genre/${type}/list?api_key=433b72bbcc8a78f3b6d6d48b30491675&language=en-US`
       );

@@ -20,6 +20,6 @@ const trendingTodaySchema = mongoose.Schema({
   media_type: String,
 });
 
-const trendingToday = new mongoose.model("trendingToday", trendingTodaySchema);
+const trendingtoday = new mongoose.model("trendingToday", trendingTodaySchema);
 
-export default trendingToday;
+export default trendingtoday;

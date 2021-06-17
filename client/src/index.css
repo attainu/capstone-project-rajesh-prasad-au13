@@ -1,21 +1,22 @@
-*{
+* {
   box-sizing: border-box;
 }
-  body {
+body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+  background: #012169;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.title{
+.title {
   margin-top: 10px;
   margin-bottom: 50px;
   display: flex;
@@ -23,12 +24,16 @@ code {
   justify-content: center;
   align-items: center;
 }
-.Heading{
-  margin-top:100px;
+.pagination {
+  margin-top: 10px;
+  margin-bottom: 80px;
+}
+.Heading {
+  margin-top: 100px;
   text-align: center;
   color: white;
 }
-.MuiPagination-root{
+.MuiPagination-root {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -37,7 +42,7 @@ code {
   margin-bottom: 10px;
   color: white;
 }
-h1{
+h1 {
   text-align: center;
-  color:white
+  color: white;
 }
