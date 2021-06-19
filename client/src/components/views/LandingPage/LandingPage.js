@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { API_KEY, API_URL, IMAGE_URL } from "../../Config";
 import { Typography, Row } from 'antd';
 import MainImage from './Sections/MainImage';
-import Card from "./Sections/Card";
+import GridCard from "./Sections/GridCard";
 
 const { Title } = Typography;
 
@@ -56,7 +56,7 @@ function LandingPage() {
             <Row gutter={[16, 16]}>
                 {Movies && Movies.map((movie, index) => (
                     <React.Fragment key={index}>
-                        <Card 
+                        <GridCard 
                             image={movie.poster_path && `${IMAGE_URL}w500${movie.poster_path}`}
                             movieId={movie.id}
                         />

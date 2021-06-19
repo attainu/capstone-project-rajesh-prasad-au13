@@ -1,16 +1,19 @@
 import { React, useEffect, useState } from "react";
 import { API_URL, API_KEY, IMAGE_URL } from "../../Config";
 import MainImage from "../LandingPage/Sections/MainImage";
-import { Descriptions, Button } from "antd";
+import GridCard from "../LandingPage/Sections/GridCard";
+import { Descriptions, Button, Row } from "antd";
+import Favourite from "./Sections/Favourite";
 
 function MovieDetailPage(props) {
-
-    
+  const movieId = props.match.params.movieId;
   const [Movie, setMovie] = useState([]);
-  const [Cast, setCast] = useState([]);
+  const [Casts, setCasts] = useState([]);
+  const [CastToggle, setCastToggle] = useState(false);
+  
 
   useEffect(() => {
-    const movieId = props.match.params.movieId;
+    
 
     fetch(`${API_URL}movie/${movieId}?api_key=${API_KEY}&language=en-US`)
       .then((response) => response.json())
@@ -19,12 +22,17 @@ function MovieDetailPage(props) {
         setMovie(response);
 
         fetch(`${API_URL}movie/${movieId}/credits?api_key=${API_KEY}`)
-            .then(response => response.json())
-            .then(response => {
-                setCast(response.Cast)
-            })
+          .then((response) => response.json())
+          .then((response) => {
+            console.log(response);
+            setCasts(response.cast);
+          });
       });
   }, []);
+
+  const handleClick = () => {
+    setCastToggle(!CastToggle);
+  };
 
   return (
     <div>
@@ -39,11 +47,10 @@ function MovieDetailPage(props) {
         />
       )}
 
-      {/* Info Button */}
+      {/* Info  */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
         <div style={{ display: "flex", justifyContent: "flex-end" }}>
-          {/* <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')} /> */}
-          <Button> Add to Favourite</Button>
+          <Favourite userFrom={localStorage.getItem('userId')} movieId={movieId} movieInfo={Movie}/>
         </div>
 
         {/* Movie Info Body */}
@@ -56,7 +63,7 @@ function MovieDetailPage(props) {
           </Descriptions.Item>
           <Descriptions.Item label="revenue">{Movie.revenue}</Descriptions.Item>
           <Descriptions.Item label="runtime">{Movie.runtime}</Descriptions.Item>
-          <Descriptions.Item label="vote_average" span={2}>
+          <Descriptions.Item label="vote average" span={2}>
             {Movie.vote_average}
           </Descriptions.Item>
           <Descriptions.Item label="vote_count">
@@ -70,12 +77,29 @@ function MovieDetailPage(props) {
 
         {/* Cast Button */}
         <div style={{ width: "85%", margin: "1rem auto" }}>
-        <div style={{ display: "flex", justifyContent: "center" }}>
-          <Button> View Cast</Button>
-        </div>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button onClickCapture={handleClick}> View Cast</Button>
+          </div>
 
+          {/* Cast */}
+
+          {CastToggle && (
+            <Row gutter={[4, 4]}>
+              {Casts &&
+                Casts.map((cast, index) => (
+                  <div key={index}>
+                    {cast.profile_path && (
+                      <GridCard
+                        cast
+                        image={`${IMAGE_URL}w500${cast.profile_path}`}
+                      />
+                    )}
+                  </div>
+                ))}
+            </Row>
+          )}
+        </div>
       </div>
-    </div>
     </div>
   );
 }
