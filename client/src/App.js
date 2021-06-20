@@ -9,6 +9,7 @@ import Favorites from "./pages/favorites/Favorites";
 import Header from "./components/Header/Header";
 import { Container } from "@material-ui/core";
 import Footer from "./components/Footer/Footer";
+import Login from "./components/Login/Login"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <div className="App">
           <Container>
             <Route path="/" exact component={Trending} />
+            <Route path="/login" exact component={Login} />
             <Route path="/movies" exact component={Movies} />
             <Route path="/series" component={Series} />
             <Route path="/favorites" component={Favorites} />

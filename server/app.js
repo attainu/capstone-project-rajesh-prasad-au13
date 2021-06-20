@@ -38,9 +38,6 @@ app.use("/movies", movieRoutes);
 app.use("/trending", trendingTodayRoutes);
 app.use("/user", userRoute);
 
-// app.get("/", (req,res)=>{
-//   res.sendFile(__dirname + '/templates/views/index.html')
-// })
 
 app.get("/signup", (req, res) => {
   const data = {
@@ -96,7 +93,7 @@ app.post("/login", (req, res) => {
           console.log("token", token);
           req.header.token = token;
           console.log("heree");
-          res.redirect(`http://localhost:3000/user/profile/getfavorites/${req.body.emailid}`)
+          res.send({token:access_token,message:"Login Success"})
         }
       );
 
