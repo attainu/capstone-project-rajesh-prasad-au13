@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+</head>
+<body>
+    <form action="/signup" method="POST">
+        <label for="name">Name:</label>
+        <input id="name" name="fullname" type="text" value={{fullname}}>
+        <label for="email">Email:</label>
+        <input id="email" name="emailid" type="email" value={{emailid}}>
+        <label for="password">Passowrd:</label>
+        <input id="password" name="password" type="password" value={{password}}>
+        <label for="password">Confirm Passowrd:</label>
+        <input id="password" name="confirm_password" type="password" value={{confirm_password}}>
+        <button type="submit">Signup</button>
+    </form>
+</body>
+</html>

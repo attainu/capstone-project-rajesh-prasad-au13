@@ -119,11 +119,11 @@ export const addMoviesByPage = (req, res) => {
     .send({ responseStatus: true, message: "Record Added Successfully!" });
 };
 
-export const searchMoviesByName = (req, res) => {
+export const searchMoviesById = (req, res) => {
   console.log(req.params);
-  const movie_name = req.params.name;
+  const movie_id = req.params.id;
 
-  movies.findOne({ original_title: movie_name }, (err, data) => {
+  movies.findOne({ id: movie_id }, (err, data) => {
     if (err) throw err;
     console.log(data);
     return res.status(200).send({ responseStatus: true, data });

@@ -4,54 +4,54 @@ import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
 import SimpleBackdrop from "../../components/BackDrop/Backdrop";
 
-
-function Trending() {
-  const [list, setlist] = useState([]);
+const Favorites = () => {
   const [page, setPage] = useState(1);
+  const [list, setlist] = useState([]);
   const [totalPages, settotalPages] = useState(10);
-
-  const fetchTrending = async () => {
+  const media_type = "favorite";
+  const fetchData = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=433b72bbcc8a78f3b6d6d48b30491675&page=${page}`
-      // `http://localhost:3000/trending/today/get?page=${page}&genre=${genreToId}`
+      `http://localhost:3000/user/profile/getfavorites/mani@gmail.com`
     );
-    console.log(data);
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
+      console.log({ list });
     }, 500);
   };
 
   useEffect(() => {
     window.scroll(0, 0);
     setlist([]);
-    fetchTrending();
+    fetchData();
     // eslint-disable-next-line
   }, [page]);
 
   return (
     <>
-      <h1 className="Heading">Trending Today</h1>
-      {list.length === 0 ? (
-        <SimpleBackdrop open={true} />
-      ) : (
-        <div className="title">
-          {list.map(l => (
+      <h1 className="Heading">Favorites</h1>
+      <div className="title">
+        {list.length !== 0 ? (
+          list.map(l => (
             <Card
               key={l.id}
               id={l.id}
               poster={l.poster_path}
               title={l.title || l.name}
-              media_type={l.media_type}
               date={l.first_air_date || l.release_date}
+              media_type={media_type}
               vote_average={l.vote_average}
             />
-          ))}
-          <CustomPagination setPage={setPage} totalPages={totalPages} />
-        </div>
-      )}
+          ))
+        ) : (
+          <SimpleBackdrop open={true} />
+        )}
+      </div>
+      <div className="pagination">
+        <CustomPagination setPage={setPage} totalPages={totalPages} />
+      </div>
     </>
   );
-}
+};
 
-export default Trending;
+export default Favorites;
