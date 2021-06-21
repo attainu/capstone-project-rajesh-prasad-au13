@@ -4,7 +4,7 @@ const { Favourite } = require("../models/Favourite");
 
 const { auth } = require("../middleware/auth");
 
-router.post("/favouriteNumber", auth, (req, res) => {
+router.post("/favouriteNumber",auth, (req, res) => {
   // Adding Favourite by MovieId
   Favourite.find({ movieId: req.body.movieId }).exec((err, favourite) => {
     if (err) return res.status(400).send(err);
@@ -12,7 +12,7 @@ router.post("/favouriteNumber", auth, (req, res) => {
   });
 });
 
-router.post("/favouriteInfo", auth, (req, res) => {
+router.post("/favouriteInfo", (req, res) => {
   // Adding Favourite by MovieId & User
   Favourite.find({
     movieId: req.body.movieId,
@@ -47,5 +47,16 @@ router.post("/removeFromFavourite", auth, (req, res) => {
         })
         
     });
+
+    router.post("/getFavouriteMovies",auth, (req, res) => {
+
+      Favourite.find({ 'userFrom': req.body.userFrom })
+      .exec((err, favourites) => {
+          if (err) return res.status(400).send(err);
+          return res.status(200).json({ success: true, favourites })
+      })
+     
+          
+      });
 
 module.exports = router;
