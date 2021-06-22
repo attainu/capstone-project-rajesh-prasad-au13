@@ -1,48 +1,88 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .card {
   width: 250px;
   height: 500px;
   background: #221154;
-  border:1px solid black;
+  border: 1px solid black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  margin:15px;
+  margin: 15px;
   color: white;
   position: relative;
 }
 .card_img {
-    position: absolute;
-    top: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 80%;
   border: 10px solid black;
   object-fit: cover;
 }
+.vote_average {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0;
+  background: #6d59c4;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vote_average h2 {
+  font-size: 20px;
+  color: #f0f3fa;
+}
+.favorite-tab {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 100;
+}
+.red {
+  color: red;
+}
+/* svg .MuiSvgIcon-root{
+  position: absolute;
+  top: 0;
+  right: ;
+} */
 .poster {
+  pointer-events: none;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
-.card_details{
-    position: absolute;
-    bottom: 10px;
-    height: 20%;
-    width: 100%;
-    display: flex;
-    
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
+.card_details {
+  pointer-events: none;
+  position: absolute;
+  bottom: 10px;
+  height: 20%;
+  width: 100%;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
 }
-.card_details div{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    /* align-items: center; */
+.card_details div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
 }
-path{
+path {
   pointer-events: none;
 }

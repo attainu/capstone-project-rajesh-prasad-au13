@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 import { useHistory } from "react-router-dom";
 
@@ -11,13 +11,14 @@ const Logout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("email");
 
-    const { data } = await axios.get(`http://localhost:3000/logout`);
-    console.log({ data });
+    await axios.get(`http://localhost:3000/logout`);
+    // console.log({ data });
   };
 
   useEffect(() => {
     window.scroll(0, 0);
     fetchData();
+    history.push('/')
     // eslint-disable-next-line
   }, []);
 

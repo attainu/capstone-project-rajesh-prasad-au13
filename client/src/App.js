@@ -29,7 +29,8 @@ function App() {
             <Route path="/favorites" component={Favorites} />
             <Route path="/search" component={Search} />
             <Route path="/logout" component={Logout} />
-            <Route path="/movies/get/details/:id" component={Details} />
+            <Route path="/movie/get/details/:id" component={Details} />
+            <Route path="/tv/get/details/:id" component={Details} />
           </Container>
         </div>
       </Switch>

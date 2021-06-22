@@ -33,8 +33,8 @@ app.use(express.json());
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 
-app.use("/series", seriesRoutes);
-app.use("/movies", movieRoutes);
+app.use("/tv", seriesRoutes);
+app.use("/movie", movieRoutes);
 app.use("/trending", trendingTodayRoutes);
 app.use("/user", userRoute);
 
@@ -78,12 +78,13 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   userModel.findOne({ email: req.body.emailid }, async (err, data) => {
     if (err) throw err;
     console.log({ data });
 
     const isMatch = await bcrypt.compare(req.body.password, data.password);
+    console.log(isMatch)
     if (isMatch) {
       const user = { email: req.body.emailid };
       const access_token = jwt.sign(

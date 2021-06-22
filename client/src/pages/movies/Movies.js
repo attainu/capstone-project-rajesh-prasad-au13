@@ -6,7 +6,7 @@ import SimpleBackdrop from "../../components/BackDrop/Backdrop";
 import Genres from "../../components/Genre/Genre";
 import useGenre from "../../customHooks/useGenre";
 
-const Movies = () => {
+const Movies = (props) => {
   const [genres, setGenres] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [page, setPage] = useState(1);
@@ -16,18 +16,15 @@ const Movies = () => {
   const media_type = "movie";
 
   const fetchData = async () => {
-    // fetch(`http://localhost:3000/movies/get?page=1`)
-    // .then(res=>res.json())
-    // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
-    console.log({ genreToId });
+    // console.log({ genreToId });
     const { data } = await axios.get(
-      `http://localhost:3000/movies/get?page=${page}&genre=${genreToId}`
+      `http://localhost:3000/movie/get?page=${page}&genre=${genreToId}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
-      console.log({ list });
-    }, 500);
+      // console.log({ list });
+    }, 0);
   };
 
   useEffect(() => {
@@ -52,6 +49,7 @@ const Movies = () => {
           {list.length !== 0 ? (
             list.map(l => (
               <Card
+                isFavorite={false}
                 key={l.id}
                 id={l.id}
                 poster={l.poster_path}

@@ -42,3 +42,24 @@ export const getSeries = (req, res) => {
     });
   }
 };
+
+
+export const searchSeriesById = (req, res) => {
+  // console.log(req.params);
+  const movie_id = req.params.id;
+  console.log(movie_id);
+
+  tvSeries.findOne({ id: movie_id }, (err, data) => {
+    if (err) throw err;
+    console.log("dtaaa=>>>>>>>>>>",data);
+    return res.status(200).send({ responseStatus: true, data });
+  });
+};
+
+
+export const getDetails = (req,res) => {
+  let findId = req.params.id
+  tvSeries.findOne({id:findId},(err,data) => {
+    return res.status(200).send({responseStatus:true,data})
+  })
+}

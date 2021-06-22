@@ -45,6 +45,7 @@ export const getFavorites = (req, res) => {
 // };
 
 export const postFavorites = (req, res) => {
+  console.log(req.body)
   const email = req.body.email;
   console.log("result=>>>>>>", req.body.result);
   console.log(email);

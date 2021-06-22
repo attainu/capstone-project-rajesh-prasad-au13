@@ -19,7 +19,7 @@ function Trending() {
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
-    }, 500);
+    }, 0);
   };
 
   useEffect(() => {

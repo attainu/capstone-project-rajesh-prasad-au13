@@ -22,7 +22,7 @@ function Series() {
     // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
     console.log({ genreToId });
     const { data } = await axios.get(
-      `http://localhost:3000/series/get?page=${page}&genre=${genreToId}`
+      `http://localhost:3000/tv/get?page=${page}&genre=${genreToId}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);
