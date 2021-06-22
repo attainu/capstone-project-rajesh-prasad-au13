@@ -1,20 +1,40 @@
 import React,{useState} from "react";
-import axios from "axios"
-import domain from "../../config/config";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+// import domain from "../../config/config";
+import "./login.css"
 
 function Login() {
-    const [email,setEmail] = useState("")
-    const [password,setpassword] = useState("")
+    const [email,setEmail] = useState("");
+    const [password,setpassword] = useState("");
+    let history = useHistory();
+    
     const handleSubmit =(e)=>{
         e.preventDefault()
-        console.log(domain)
-        axios.post(`${domain}/login`,{emailid:email, password:password},{headers:{"Access-Control-Cross-Origin":"*"}})
-        .then(res=> console.log(res.data))
+
+        axios.post('/login',
+          {
+            emailid: email, 
+            password: password
+          },
+          {
+            headers:{
+              "Access-Control-Allow-Origin": "*"
+            }
+          })
+        .then(res=> {
+          if(res.data && res.data.token) {
+            sessionStorage.setItem("token", res.data.token);
+            sessionStorage.setItem("email", email);
+            history.push('/favorites');
+          }
+        })
         .catch(err => console.log(err))
     }
   return (
       <>
     <h1 className="Heading">Login</h1>
+    
     <div>
       <form>
         <label for="email">Email:</label>

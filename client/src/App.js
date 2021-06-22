@@ -10,6 +10,9 @@ import Header from "./components/Header/Header";
 import { Container } from "@material-ui/core";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login"
+import Logout from "./pages/logout/Logout"
+import Details from "./pages/details/Details";
+import Signup from "./pages/signup/Signup"
 
 function App() {
   return (
@@ -18,12 +21,15 @@ function App() {
       <Switch>
         <div className="App">
           <Container>
-            <Route path="/" exact component={Trending} />
+            <Route path="/signup" exact component={Signup} />
             <Route path="/login" exact component={Login} />
+            <Route path="/" exact component={Trending} />
             <Route path="/movies" exact component={Movies} />
             <Route path="/series" component={Series} />
             <Route path="/favorites" component={Favorites} />
             <Route path="/search" component={Search} />
+            <Route path="/logout" component={Logout} />
+            <Route path="/movies/get/details/:id" component={Details} />
           </Container>
         </div>
       </Switch>

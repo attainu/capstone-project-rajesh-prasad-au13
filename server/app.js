@@ -22,13 +22,13 @@ const static_path = path.resolve(__dirname, "./public");
 const template_path = path.resolve(__dirname, "./templates/views");
 console.log(template_path);
 
+app.use(cors());
 app.use(express.static(static_path));
 
 app.set("view engine", "hbs");
 app.set("views", template_path);
 
 app.use(express.json());
-app.use(cors());
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
@@ -74,8 +74,9 @@ app.get("/login", (req, res) => {
     email: "",
     password: "",
   };
-  res.render(template_path + "/login.hbs", data);
+  res.send(template_path + "/login.hbs", data);
 });
+
 app.post("/login", (req, res) => {
   console.log(req.body);
   userModel.findOne({ email: req.body.emailid }, async (err, data) => {
@@ -92,8 +93,7 @@ app.post("/login", (req, res) => {
           if (err) throw err;
           console.log("token", token);
           req.header.token = token;
-          console.log("heree");
-          res.send({token:access_token,message:"Login Success"})
+          res.send({token, message:"Login Success"})
         }
       );
 
@@ -104,6 +104,12 @@ app.post("/login", (req, res) => {
     }
   });
 });
+
+app.get('/logout', (req,res)=> {
+  console.log("working")
+  req.header.token = ""
+  res.send({data:[],message:"Logged Out"})
+})
 
 app.listen(port, () => {
   console.log(`Server is running on ${port}`);

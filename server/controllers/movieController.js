@@ -1,4 +1,5 @@
 import movies from "../models/moviesModel.js";
+import trendingtoday from "../models/trendingToday.js";
 // import tvSeries from "../models/seriesModel.js";
 
 
@@ -120,12 +121,13 @@ export const addMoviesByPage = (req, res) => {
 };
 
 export const searchMoviesById = (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   const movie_id = req.params.id;
+  console.log(movie_id);
 
   movies.findOne({ id: movie_id }, (err, data) => {
     if (err) throw err;
-    console.log(data);
+    console.log("dtaaa=>>>>>>>>>>",data);
     return res.status(200).send({ responseStatus: true, data });
   });
 };
@@ -164,3 +166,11 @@ export const searchMoviesByGenre = (req, res) => {
     });
   });
 };
+
+export const getDetails = (req,res) => {
+  let findId = req.params.id
+  console.log("hhhhhh")
+  movies.findOne({id:findId},(err,data) => {
+    return res.status(200).send({responseStatus:true,data})
+  })
+}

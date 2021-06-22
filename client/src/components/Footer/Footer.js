@@ -26,12 +26,19 @@ export default function SimpleBottomNavigation() {
 
   useEffect(() => {
     if(value===0){history.push('/')}
-    else if(value===1){history.push('/login')}
-    // else if(value===1){history.push('/movies')}
+    else if(value===1){history.push('/movies')}
     else if(value===2){history.push('/series')}
-    else if(value===3){history.push('/favorites')}
+    else if(value===3){
+      //check if user is already signed in
+      if(!sessionStorage.getItem("token")) {
+        history.push('/login');
+      }else {
+        history.push('/favorites');
+      }
+    }
     else if(value===4){history.push('/search')}
-  }, [value,history])
+    else if(value===5){history.push('/login')}
+  }, [value,history]);
 
   return (
     <BottomNavigation
@@ -47,6 +54,7 @@ export default function SimpleBottomNavigation() {
       <BottomNavigationAction style={{color:"white"}} label="TV Shows" icon={<LiveTvIcon />} />
       <BottomNavigationAction style={{color:"white"}} label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction style={{color:"white"}} label="Search" icon={<SearchIcon />} />
+      {/* <BottomNavigationAction style={{color:"white"}} label="Login" icon={<SearchIcon />} /> */}
     </BottomNavigation>
   );
 }
