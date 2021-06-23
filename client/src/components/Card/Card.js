@@ -33,7 +33,8 @@ function Card({
     const fetchData = findId => {
       axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res => 
         axios.post(
-          `http://localhost:3000/user/profile/postfavorites/:${email}`,
+          `http://localhost:3000/user/profile/postfavorites/${email}`,
+          // http://localhost:3000/user/profile/postfavorites/:${email} Also working
           {
             email: email,
             result: res.data.data,
@@ -50,21 +51,38 @@ function Card({
     fetchData(findId);
   };
   const handleRemoveFav = e => {
+    e.stopPropagation()
     let email = sessionStorage.getItem("email");
     let findId = e.target.id;
     console.log({ findId });
-    axios.post(
-      `http://localhost:3000/user/profile/removefavorites/${email}`,
-      {
-        email_id: email,
-        movie_id: findId,
-      },
-      {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-        },
-      }
-    );
+
+    axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res => 
+        axios.post(
+          `http://localhost:3000/user/profile/removefavorites/${email}`,
+          {
+            email: email,
+            result: res.data.data.id,
+          },
+          {
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+            },
+          }
+        )
+      );
+      
+    // axios.post(
+    //   `http://localhost:3000/user/profile/removefavorites/${email}`,
+    //   {
+    //     email_id: email,
+    //     movie_id: findId,
+    //   },
+    //   {
+    //     headers: {
+    //       "Access-Control-Allow-Origin": "*",
+    //     },
+    //   }
+    // );
   };
 
   

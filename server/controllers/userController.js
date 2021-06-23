@@ -73,11 +73,13 @@ export const postFavorites = (req, res) => {
 
 export const removeFavorites = (req, res) => {
   console.log("heree");
-  console.log(req.params)
-  console.log(req.body)
-  userModel.updateOne({ email: req.params.email }, 
-    { $pull: { favorites: { id: req.body.movie_id } } },
-    {new:true},
+  console.log(req.params.email, req.body.result)
+  // console.log("body", req.body)
+  // console.log(req.params.email, req.body.movie_id)
+  userModel.update(
+    { email: req.params.email }, 
+    { $pull: { favorites: { id: req.body.result } } },
+    {multi:true},
     (err, data) => {
       console.log(data)
       if (err) throw err;
