@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-const movieSchema = new mongoose.Schema({
+const movieSchema = mongoose.Schema({
   adult: Boolean,
   backdrop_path: String,
   genre_ids: [Number],

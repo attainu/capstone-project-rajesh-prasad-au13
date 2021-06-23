@@ -1,36 +1,16 @@
-import trendingtoday from "../models/trendingToday.js";
+import trends from "../models/trendingToday.js";
+// import movies from "../models/moviesModel.js"
 
 export const getTrendingToday = (req, res) => {
   const q = req.query;
-  // console.log("working");
-  console.log(q.page, q.genre);
-  if (q.genre) {
-    const genre_id = q.genre.split(",");
-    const queryPage = req.query.page ? req.query.page : 1;
-    console.log(queryPage, genre_id);
-    //   const genre_id = req.params.ids; //1,3,5
+  console.log("page", q.page);
 
-    //  exact matching genre {genre_ids: genre_id}
-    //  includes given genre { genre_ids: { $all: genre_id } }
-
-    trendingtoday.find({ genre_ids: { $all: genre_id } }, (err, data) => {
-      console.log({data})
-      const pages = Math.ceil(data.length / 20);
-      console.log(pages);
-      let ans = data.slice(10 * (queryPage - 1), queryPage * 10);
-      return res.status(200).send({
-        responseStatus: true,
-        results: ans,
-        length: ans.length,
-        total_pages: pages,
-      });
-    });
-  } else {
-    console.log("working")
     let ans;
-    trendingtoday.find({}, (err, data) => {
+    trends.find({}, (err, data) => {
       if (err) throw err;
       console.log({data})
+    console.log("working 2")
+
       const pages = Math.ceil(data.length / 10);
       console.log(pages);
       q.page
@@ -43,5 +23,5 @@ export const getTrendingToday = (req, res) => {
         total_pages: pages,
       });
     });
-  }
+  
 };

@@ -1,13 +1,16 @@
 import mongoose from "mongoose";
 
-const trendingTodaySchema = mongoose.Schema({
+const trendingSchema = new mongoose.Schema({
+  // id:Number,
+  // name:String
+
+  id: Number,
   video: { type: Boolean, default: false },
   adult: { type: Boolean, default: false },
   backdrop_path: String,
   first_air_date: String,
   release_date: String,
   genre_ids: [Number],
-  id: Number,
   original_name: String,
   name: String,
   origin_country: [String],
@@ -20,6 +23,6 @@ const trendingTodaySchema = mongoose.Schema({
   media_type: String,
 });
 
-const trendingtoday = new mongoose.model("trendingToday", trendingTodaySchema);
+const trends = new mongoose.model("trends", trendingSchema);
 
-export default trendingtoday;
+export default trends;

@@ -1,7 +1,4 @@
 import express from "express";
-// import { searchMoviesByName, searchMoviesByGenre, searchMoviesByVoteAverage, getMovies, addMoviesByPage, updateMoviesByPage } from "../controllers/movieController.js";
-// import { searchMoviesByName, searchMoviesByGenre, searchMoviesByVoteAverage, getMovies, addMoviesByPage, updateMoviesByPage } from "../controllers/seriesController";
-// import { searchMoviesByGenre, searchMoviesByVoteAverage, addMoviesByPage, updateMoviesByPage } from "../controllers/movieController.js";
 import { getSeries, searchSeriesById, getDetails } from "../controllers/seriesController.js";
 
 const seriesRoutes = express.Router();

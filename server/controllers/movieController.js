@@ -1,5 +1,5 @@
 import movies from "../models/moviesModel.js";
-import trendingtoday from "../models/trendingToday.js";
+import trend from "../models/trendingToday.js";
 // import tvSeries from "../models/seriesModel.js";
 
 
@@ -29,7 +29,9 @@ export const getMovies = (req, res) => {
     });
   } else {
     let ans;
+    
     movies.find({}, (err, data) => {
+      console.log("heheh")
       if (err) throw err;
       const pages = Math.ceil(data.length / 10);
       console.log(pages);
