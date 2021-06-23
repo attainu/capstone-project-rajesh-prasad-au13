@@ -169,7 +169,7 @@ export const searchMoviesByGenre = (req, res) => {
 
 export const getDetails = (req,res) => {
   let findId = req.params.id
-  console.log("hhhhhh")
+  console.log("getting details")
   movies.findOne({id:findId},(err,data) => {
     return res.status(200).send({responseStatus:true,data})
   })

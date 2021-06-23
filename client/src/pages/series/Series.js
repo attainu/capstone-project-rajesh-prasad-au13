@@ -60,6 +60,8 @@ function Series() {
               date={l.first_air_date || l.release_date}
               media_type={media_type}
               vote_average={l.vote_average}
+              overview={l.overview}
+              
             />
           ))
         ) : (

@@ -8,14 +8,14 @@ import LocalMoviesIcon from '@material-ui/icons/LocalMovies';
 import LiveTvIcon from '@material-ui/icons/LiveTv';
 import SearchIcon from '@material-ui/icons/Search';
 import {useHistory} from "react-router-dom";
-
+import "./Footer.css"
 const useStyles = makeStyles({
   root: {
     width: "100%",
     position:"fixed",
     bottom:0,
     background:"#0c4271",
-    
+
   },
 });
 

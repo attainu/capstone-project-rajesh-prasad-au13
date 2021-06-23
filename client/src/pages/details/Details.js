@@ -3,7 +3,7 @@ import axios from "axios";
 import "./details.css";
 
 function Details(props) {
-  const [data, setData] = useState("");
+  const [data, setData] = useState("abcd");
   console.log({ props });
   console.log("herere");
   let base = (props.location.pathname).includes("/movie/") ? "movie" :"tv"
@@ -18,11 +18,13 @@ function Details(props) {
     fetchData();
     // eslint-disable-next-line
   }, []);
+
   console.log(data);
   return (
     <>
       <h1 className="Heading">Details</h1>
-      <div className="title details">
+      {
+        data ? <div className="title details">
         <div className="bg-img">
           <img
             className="bg-poster"
@@ -49,7 +51,8 @@ function Details(props) {
           <p className="overview">{data.overview}</p>
           <div className="cast"></div>
         </div>
-      </div>
+      </div> : <h1>No Data Found</h1>
+      }
     </>
   );
 }

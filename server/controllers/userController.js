@@ -48,14 +48,15 @@ export const postFavorites = (req, res) => {
   console.log(req.body)
   const email = req.body.email;
   console.log("result=>>>>>>", req.body.result);
-  console.log(email);
+  console.log(email,req.body.media_type);
   userModel.updateOne(
     { email: email },
     {
       // console.log('rrrrrrrrrrrr=>>>>>>>',req.body.result)
-      $push: {
+      $addToSet: {
         favorites: req.body.result,
       },
+      
       // data.favourites:(data.favorites).push(req.body.result);
       // userModel().save()
     },

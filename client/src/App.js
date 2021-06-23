@@ -14,6 +14,8 @@ import Logout from "./pages/logout/Logout"
 import Details from "./pages/details/Details";
 import Signup from "./pages/signup/Signup"
 
+import Notfound from "./pages/Not Found/Notfound"
+
 function App() {
   return (
     <BrowserRouter>
@@ -31,6 +33,7 @@ function App() {
             <Route path="/logout" component={Logout} />
             <Route path="/movie/get/details/:id" component={Details} />
             <Route path="/tv/get/details/:id" component={Details} />
+            <Route path="/notfound" component={Notfound} />
           </Container>
         </div>
       </Switch>

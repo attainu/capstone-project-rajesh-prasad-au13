@@ -41,13 +41,13 @@ const Favorites = () => {
 
   return (
     <>
-      <h1 className="Heading">Your Favorites</h1>
-      <button onClick={() => history.push("/logout")}>Logout</button>
+      <h1  className="Heading">Your Favorites</h1>
+      <button style={{padding:"20px 30px",color:"white", background:"#333333", border:"none",     cursor: "pointer"}} onClick={() => history.push("/logout")}>Logout</button>
       <div
         style={{ display: "flex", flexDirection: "column" }}
         className="title"
       >
-        <div>
+        <div style={{color:"white"}}>
           <h2>Welcome {sessionStorage.getItem("email")}</h2>
         </div>
         <div style={{display:"flex",flexWrap:"wrap"}}>

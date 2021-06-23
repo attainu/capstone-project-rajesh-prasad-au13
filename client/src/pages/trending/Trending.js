@@ -3,12 +3,13 @@ import React, { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
 import SimpleBackdrop from "../../components/BackDrop/Backdrop";
-
+import { useHistory } from "react-router-dom";
 
 function Trending() {
   const [list, setlist] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, settotalPages] = useState(10);
+  const history = useHistory();
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
@@ -16,6 +17,9 @@ function Trending() {
       // `http://localhost:3000/trending/today/get?page=${page}&genre=${genreToId}`
     );
     console.log(data);
+    if(data === null){
+      history.push("/notfound")
+    }
     setTimeout(() => {
       settotalPages(data.total_pages);
       setlist(data.results);
@@ -45,6 +49,7 @@ function Trending() {
               media_type={l.media_type}
               date={l.first_air_date || l.release_date}
               vote_average={l.vote_average}
+              overview={l.overview}
             />
           ))}
           <CustomPagination setPage={setPage} totalPages={totalPages} />

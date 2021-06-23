@@ -14,6 +14,7 @@ function Card({
   vote_average,
   media_type,
   isFavorite,
+  overview
 }) {
 
   // console.log(media_type);
@@ -38,6 +39,7 @@ function Card({
           {
             email: email,
             result: res.data.data,
+            media_type:e.target.getAttribute("media")
           },
           {
             headers: {
@@ -115,11 +117,15 @@ function Card({
         />
       </div>
       <div className="card_details">
+        
         <h3>{title}</h3>
         <div>
           <span>{media_type === "tv" ? "TV Series" : "Movie"}</span>
           <span>{date}</span>
         </div>
+        {/* <div>
+        <p style={{margin:0}} className="overview">{overview}</p>
+        </div> */}
       </div>
     </div>
   );

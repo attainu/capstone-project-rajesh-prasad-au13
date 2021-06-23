@@ -39,28 +39,31 @@ function Login() {
     <>
       <h1 className="Heading">Login</h1>
 
-      <div>
+      <div className="loginForm">
         <form>
-          <label for="email">Email:</label>
+
           <input
             id="email"
             name="emailid"
             type="email"
+            placeholder="Enter Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
           />
 
-          <label for="password">Password:</label>
+        
           <input
             id="password"
             name="password"
             type="password"
+            placeholder="Enter Password"
             value={password}
             onChange={e => setpassword(e.target.value)}
           />
           <button id="login" type="submit" onClick={handleSubmit}>
             Login
           </button>
+          <a href="/signup">New? SignUp</a>
         </form>
       </div>
     </>

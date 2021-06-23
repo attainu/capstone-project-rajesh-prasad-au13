@@ -139,6 +139,7 @@ const Search = () => {
               media_type={l.media_type}
               date={l.first_air_date || l.release_date}
               vote_average={l.vote_average}
+              overview={l.overview}
             />
           ))
         }
