@@ -41,16 +41,28 @@ const Favorites = () => {
 
   return (
     <>
-      <h1  className="Heading">Your Favorites</h1>
-      <button style={{padding:"20px 30px",color:"white", background:"#333333", border:"none",     cursor: "pointer"}} onClick={() => history.push("/logout")}>Logout</button>
+      <h1 className="Heading">Your Favorites</h1>
+      <button
+        style={{
+          padding: "10px 20px",
+          color: "white",
+          border: "none",
+          cursor: "pointer",
+          fontSize: "20px",
+          background: "#125D98"
+        }}
+        onClick={() => history.push("/logout")}
+      >
+        Logout
+      </button>
       <div
         style={{ display: "flex", flexDirection: "column" }}
         className="title"
       >
-        <div style={{color:"white"}}>
+        <div style={{ color: "white" }}>
           <h2>Welcome {sessionStorage.getItem("email")}</h2>
         </div>
-        <div style={{display:"flex",flexWrap:"wrap"}}>
+        <div style={{ display: "flex", flexWrap: "wrap" }}>
           {list.length === 0 ? (
             <h2>{loading}</h2>
           ) : (

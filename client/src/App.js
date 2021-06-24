@@ -9,12 +9,12 @@ import Favorites from "./pages/favorites/Favorites";
 import Header from "./components/Header/Header";
 import { Container } from "@material-ui/core";
 import Footer from "./components/Footer/Footer";
-import Login from "./components/Login/Login"
-import Logout from "./pages/logout/Logout"
+import Login from "./components/Login/Login";
+import Logout from "./pages/logout/Logout";
 import Details from "./pages/details/Details";
-import Signup from "./pages/signup/Signup"
+import Signup from "./pages/signup/Signup.js";
 
-import Notfound from "./pages/Not Found/Notfound"
+import Notfound from "./pages/Not Found/Notfound";
 
 function App() {
   return (

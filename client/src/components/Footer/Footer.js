@@ -54,7 +54,6 @@ export default function SimpleBottomNavigation() {
       <BottomNavigationAction style={{color:"white"}} label="TV Shows" icon={<LiveTvIcon />} />
       <BottomNavigationAction style={{color:"white"}} label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction style={{color:"white"}} label="Search" icon={<SearchIcon />} />
-      {/* <BottomNavigationAction style={{color:"white"}} label="Login" icon={<SearchIcon />} /> */}
     </BottomNavigation>
   );
 }

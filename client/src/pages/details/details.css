@@ -22,7 +22,6 @@ div.details{
 
 .movie-details {
   width: 50%;
-
   position: absolute;
   color: white;
   top: 40%;
@@ -39,4 +38,10 @@ div.details{
   width: 100%;
   object-fit: cover;
   opacity: 0.3;
+}
+p.overview{
+font-size: 20px;
+}
+h1.movie-name{
+  text-decoration: underline;
 }

@@ -1,15 +1,15 @@
 import express from "express";
-import { getuser, getFavorites, postFavorites, removeFavorites } from "../controllers/userController.js";
+import { getFavorites, postFavorites, removeFavorites } from "../controllers/userController.js";
 const userRoute = express.Router();
 import auth from "../controllers/auth.js"
 
 // prepend /user
-userRoute.get("/:email", getuser);
+// userRoute.get("/:email", getuser);
 // userRoute.post("/post", postuser);
-userRoute.get("/profile/getfavorites/:email", getFavorites);
 // userRoute.get("/profile/getfavorites/:email", auth, getFavorites);
-userRoute.post("/profile/postfavorites/:email", postFavorites);
-userRoute.post("/profile/removefavorites/:email", removeFavorites);
+userRoute.get("/profile/getfavorites/:email",auth, getFavorites);
+userRoute.post("/profile/postfavorites/:email",auth, postFavorites);
+userRoute.post("/profile/removefavorites/:email",auth, removeFavorites);
 
 
 export default userRoute;

@@ -7,10 +7,6 @@ export const getSeries = (req, res) => {
     const genre_id = (q.genre).split(",");
     const queryPage = req.query.page ? req.query.page : 1;
     console.log(queryPage,genre_id);
-    //   const genre_id = req.params.ids; //1,3,5
-
-    //  exact matching genre {genre_ids: genre_id}
-    //  includes given genre { genre_ids: { $all: genre_id } }
 
     tvSeries.find({ genre_ids: { $all: genre_id } }, (err, data) => {
       // console.log({data})

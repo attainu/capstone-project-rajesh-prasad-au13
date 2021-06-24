@@ -16,15 +16,11 @@ const Movies = (props) => {
   const media_type = "movie";
 
   const fetchData = async () => {
-    // console.log({ genreToId });
     const { data } = await axios.get(
       `http://localhost:3000/movie/get?page=${page}&genre=${genreToId}`
     );
-    setTimeout(() => {
       settotalPages(data.total_pages);
-      setlist(data.results);
-      // console.log({ list });
-    }, 0);
+      setlist(data.results);   
   };
 
   useEffect(() => {
@@ -33,7 +29,7 @@ const Movies = (props) => {
     fetchData();
     // eslint-disable-next-line
   }, [page, genreToId]);
-
+  console.log({ list });
   return (
     <>
       <h1 className="Heading">Movies</h1>

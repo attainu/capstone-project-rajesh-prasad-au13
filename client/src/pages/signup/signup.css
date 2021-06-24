@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+form{
+    font-family: 'Inter', sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 50%;
+
+
+}
+/* .loginForm{
+    width: 800px;
+    height: 800px;
+    background: #242323;
+} */
+#signup{
+    border: none;
+    cursor: pointer;
+    width: 300px;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background: #E50914;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+input{
+
+    width: 300px;
+    height: 40px;
+    margin: 20px;
+    font-size: 16px;
+    color: white;
+    font-weight: 400;
+    padding-left: 20px;
+    border:none;
+    background: #333333;
+    
+}
+input:focus{
+    outline: none;
+    background: #494949;
+
+}
+a{
+    font-weight: 400;
+}

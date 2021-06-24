@@ -7,7 +7,7 @@ function Details(props) {
   console.log({ props });
   console.log("herere");
   let base = (props.location.pathname).includes("/movie/") ? "movie" :"tv"
-  // console.log(base)
+  console.log(base)
   const fetchData = () => {
     axios
       .get(`http://localhost:3000/${base}/get/details/${props.match.params.id}`)
@@ -19,7 +19,7 @@ function Details(props) {
     // eslint-disable-next-line
   }, []);
 
-  console.log(data);
+  // console.log(data);
   return (
     <>
       <h1 className="Heading">Details</h1>
@@ -49,7 +49,7 @@ function Details(props) {
         <div className="movie-details">
           <h1 className="movie-name">{data.original_title}</h1>
           <p className="overview">{data.overview}</p>
-          <div className="cast"></div>
+          {/* <div className="cast"></div> */}
         </div>
       </div> : <h1>No Data Found</h1>
       }

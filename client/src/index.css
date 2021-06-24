@@ -32,9 +32,13 @@ code {
   margin-bottom: 80px;
 }
 .Heading {
-  margin-top: 100px;
+  margin-top: 120px;
   text-align: center;
   color: white;
+  background: #c31432;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #240b36, #c31432);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #240b36, #c31432); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 .MuiPagination-root {
   width: 100%;
@@ -48,4 +52,8 @@ code {
 h1 {
   text-align: center;
   color: white;
+}
+
+a{
+  color: #5C33F6
 }

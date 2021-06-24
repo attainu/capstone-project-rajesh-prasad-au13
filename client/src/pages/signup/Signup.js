@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+import "./signup.css";
 
 function Signup() {
   const history = useHistory();
@@ -8,6 +9,10 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  // const [EmailError, setEmailError] = "";
+  // const [PasswordError, setPasswordError] = "";
+  // const [CPasswordError, setCPasswordError] = "";
 
   const handleName = e => {
     setName(e.target.value);
@@ -32,6 +37,7 @@ function Signup() {
           name: name,
           emailid: email,
           password: password,
+          confirm_password: confirmPassword,
         },
         {
           headers: {
@@ -48,29 +54,56 @@ function Signup() {
       .catch(err => console.log(err));
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <label for="">Name:</label>
-      <input type="text" id="name" onChange={handleName} value={name} />
+    <>
+      <h1 className="Heading">Signup</h1>
+      <div className="signupForm">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            id="name"
+            placeholder="Enter Name"
+            onChange={handleName}
+            value={name}
+            required
+          />
 
-      <label for="">Email:</label>
-      <input type="email" id="email" onChange={handleEmail} value={email} />
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter Email"
+            onChange={handleEmail}
+            value={email}
+            required
+          />
+          {/* <span>{EmailError}</span> */}
 
-      <label for="">Password:</label>
-      <input
-        type="password"
-        id="password"
-        onChange={handlePassword}
-        value={password}
-      />
+          <input
+            type="password"
+            id="password"
+            onChange={handlePassword}
+            placeholder="Enter Password"
+            value={password}
+            required
+          />
+          {/* <span>{PasswordError}</span> */}
 
-      <label for="">Confirm Password:</label>
-      <input
-        type="password"
-        id="confirmPassword"
-        onChange={handleConfirmPassword}
-        value={confirmPassword}
-      />
-    </form>
+          <input
+            type="password"
+            id="confirmPassword"
+            onChange={handleConfirmPassword}
+            placeholder="Confirm Password here"
+            value={confirmPassword}
+            required
+          />
+          {/* <span>{CPasswordError}</span> */}
+
+          <button type="submit" id="signup">
+            Signup
+          </button>
+          <a onClick={() => history.push("/login")}>Already a user? Login</a>
+        </form>
+      </div>
+    </>
   );
 }
 
