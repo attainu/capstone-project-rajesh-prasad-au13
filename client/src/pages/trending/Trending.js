@@ -10,7 +10,6 @@ function Trending() {
   const [page, setPage] = useState(1);
   const [totalPages, settotalPages] = useState(10);
   const history = useHistory();
-  // const media_type = "movie"
 
   const fetchTrending = async () => {
     const { data } = await axios.get(

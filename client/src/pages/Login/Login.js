@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-// import domain from "../../config/config";
 import "./login.css";
 
 function Login() {

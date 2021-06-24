@@ -1,6 +1,5 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-// import "./Movies.css";
 import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
 import SimpleBackdrop from "../../components/BackDrop/Backdrop";
@@ -17,9 +16,7 @@ function Series() {
   const media_type = "tv";
 
   const fetchSeries = async () => {
-    // fetch(`http://localhost:3000/movies/get?page=1`)
-    // .then(res=>res.json())
-    // .then(data => {console.log(data.total_pages);setlist(data.results);settotalPages(data.total_pages)})
+
     console.log({ genreToId });
     const { data } = await axios.get(
       `http://localhost:3000/tv/get?page=${page}&genre=${genreToId}`

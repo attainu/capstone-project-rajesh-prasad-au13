@@ -8,7 +8,6 @@ div.details{
 .img-box {
   width: 300px;
   height: 500px;
-  /* object-fit:contain; */
   border: 2px solid red;
   position: absolute;
   top: 50px;

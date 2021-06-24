@@ -9,7 +9,7 @@ import Favorites from "./pages/favorites/Favorites";
 import Header from "./components/Header/Header";
 import { Container } from "@material-ui/core";
 import Footer from "./components/Footer/Footer";
-import Login from "./components/Login/Login";
+import Login from "./pages/Login/Login.js";
 import Logout from "./pages/logout/Logout";
 import Details from "./pages/details/Details";
 import Signup from "./pages/signup/Signup.js";

@@ -5,7 +5,6 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
-// import SimpleBackdrop from "../../components/BackDrop/Backdrop";
 
 const useStyles = makeStyles(theme => ({
   grow: {

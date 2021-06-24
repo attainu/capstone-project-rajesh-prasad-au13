@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Card from "../../components/Card/Card";
 import CustomPagination from "../../components/Pagination/Pagination";
-// import SimpleBackdrop from "../../components/BackDrop/Backdrop";
 import { useHistory } from "react-router-dom";
 
 const Favorites = () => {
@@ -25,7 +24,6 @@ const Favorites = () => {
       if (list.length === 0) {
         setLoading("No Data");
       }
-      // console.log({ list });
     }, 500);
   };
 

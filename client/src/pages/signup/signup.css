@@ -9,14 +9,8 @@ form{
     align-items: center;
     position: relative;
     top: 50%;
-
-
 }
-/* .loginForm{
-    width: 800px;
-    height: 800px;
-    background: #242323;
-} */
+
 #signup{
     border: none;
     cursor: pointer;

@@ -9,25 +9,14 @@ import seriesRoutes from "./routes/seriesRoutes.js";
 import trendingTodayRoutes from "./routes/trendingTodayRoutes.js";
 import userRoute from "./routes/userRoutes.js";
 import bodyparser from "body-parser";
-import path from "path";
 import bcrypt from "bcrypt";
-import hbs from "hbs";
 import userModel from "./models/userModel.js";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-const __dirname = path.resolve();
+// const __dirname = path.resolve();
 dotenv.config();
 
-const static_path = path.resolve(__dirname, "./public");
-const template_path = path.resolve(__dirname, "./templates/views");
-console.log(template_path);
-
 app.use(cors());
-app.use(express.static(static_path));
-
-// app.set("view engine", "hbs");
-// app.set("views", template_path);
-
 app.use(express.json());
 
 app.use(bodyparser.json());
@@ -37,15 +26,6 @@ app.use("/tv", seriesRoutes);
 app.use("/movie", movieRoutes);
 app.use("/trending", trendingTodayRoutes);
 app.use("/user", userRoute);
-
-// app.get("/signup", (req, res) => {
-//   const data = {
-//     name: "",
-//     email: "",
-//     password: "",
-//   };
-//   res.render(template_path + "/signup.hbs", data);
-// });
 
 app.post("/signup", async (req, res) => {
   console.log("req", req.body);
@@ -72,14 +52,6 @@ app.post("/signup", async (req, res) => {
     });
   }
 });
-
-// app.get("/login", (req, res) => {
-//   const data = {
-//     email: "",
-//     password: "",
-//   };
-//   res.send(template_path + "/login.hbs", data);
-// });
 
 app.post("/login", (req, res) => {
   let error = ""
@@ -111,7 +83,6 @@ app.post("/login", (req, res) => {
         }
       );
 
-      // return res.send({ access_token });
     } else {
       error = "Invalid Credentials"
       return res.send({ token:"", message: "Invalid Credentials",error });
@@ -120,7 +91,7 @@ app.post("/login", (req, res) => {
 });
 
 app.get("/logout", (req, res) => {
-  console.log("working");
+  // console.log("working");
   req.header.token = "";
   res.send({ data: [], message: "Logged Out" });
 });

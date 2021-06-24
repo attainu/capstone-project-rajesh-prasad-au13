@@ -1,9 +1,6 @@
 import mongoose from "mongoose";
 
 const trendingSchema = new mongoose.Schema({
-  // id:Number,
-  // name:String
-
   id: Number,
   video: { type: Boolean, default: false },
   adult: { type: Boolean, default: false },

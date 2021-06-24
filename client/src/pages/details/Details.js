@@ -18,8 +18,7 @@ function Details(props) {
     fetchData();
     // eslint-disable-next-line
   }, []);
-
-  // console.log(data);
+  
   return (
     <>
       <h1 className="Heading">Details</h1>

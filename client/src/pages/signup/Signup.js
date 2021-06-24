@@ -10,10 +10,6 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  // const [EmailError, setEmailError] = "";
-  // const [PasswordError, setPasswordError] = "";
-  // const [CPasswordError, setCPasswordError] = "";
-
   const handleName = e => {
     setName(e.target.value);
   };
@@ -46,9 +42,6 @@ function Signup() {
         }
       )
       .then(res => {
-        console.log(res);
-        // sessionStorage.setItem("token", res.data.token);
-        // sessionStorage.setItem("email", email);
         history.push("/login");
       })
       .catch(err => console.log(err));
