@@ -82,7 +82,7 @@ const Search = () => {
     fetch(search_url)
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        console.log(data);
         setTimeout(() => {
           settotalPages(data.total_pages);
           setlist(data.results);
@@ -93,9 +93,9 @@ const Search = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const search_url = `https://api.themoviedb.org/3/search/movie?api_key=433b72bbcc8a78f3b6d6d48b30491675&page=${page}&query=${searchWord}`;
-    console.log(list)
+    console.log(list);
     fetchData(search_url);
-    console.log(list)
+    console.log(list);
   };
 
   useEffect(() => {
@@ -125,27 +125,28 @@ const Search = () => {
           />
         </div>
       </form>
-      {totalPages === 0 ? 
-      <h1>NO DATA</h1> : 
-      <div className="title">
-        {list && 
-          list.map(l => (
-            <Card
-              key={l.id}
-              id={l.id}
-              poster={l.poster_path}
-              title={l.title || l.name}
-              media_type={l.media_type}
-              date={l.first_air_date || l.release_date}
-              vote_average={l.vote_average}
-              overview={l.overview}
-            />
-          ))
-        }
-        {totalPages > 1 && (
-          <CustomPagination setPage={setpage} totalPages={totalPages} />
-        )}
-      </div>}
+      {totalPages === 0 ? (
+        <h1>NO DATA</h1>
+      ) : (
+        <div className="title">
+          {list &&
+            list.map(l => (
+              <Card
+                key={l.id}
+                id={l.id}
+                poster={l.poster_path}
+                title={l.title || l.name}
+                media_type={l.media_type}
+                date={l.first_air_date || l.release_date}
+                vote_average={l.vote_average}
+                overview={l.overview}
+              />
+            ))}
+          {totalPages > 1 && (
+            <CustomPagination setPage={setpage} totalPages={totalPages} />
+          )}
+        </div>
+      )}
     </>
   );
 };

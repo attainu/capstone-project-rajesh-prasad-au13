@@ -13,7 +13,7 @@ function Trending() {
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/trending/today/get?page=${page}`);
+      `https://movie-app-rajesh.herokuapp.com/trending/today/get?page=${page}`);
 
     console.log("trendingData", data);
     if(data === null){

@@ -28,7 +28,7 @@ function Signup() {
 
     axios
       .post(
-        "/signup",
+        "https://movie-app-rajesh.herokuapp.com/signup",
         {
           name: name,
           emailid: email,

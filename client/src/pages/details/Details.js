@@ -10,7 +10,7 @@ function Details(props) {
   console.log(base)
   const fetchData = () => {
     axios
-      .get(`http://localhost:3000/${base}/get/details/${props.match.params.id}`)
+      .get(`https://movie-app-rajesh.herokuapp.com/${base}/get/details/${props.match.params.id}`)
       .then(res => setData(res.data.data));
   };
 

@@ -17,7 +17,7 @@ const Movies = (props) => {
 
   const fetchData = async () => {
     const { data } = await axios.get(
-      `http://localhost:3000/movie/get?page=${page}&genre=${genreToId}`
+      `https://movie-app-rajesh.herokuapp.com/movie/get?page=${page}&genre=${genreToId}`
     );
       settotalPages(data.total_pages);
       setlist(data.results);   

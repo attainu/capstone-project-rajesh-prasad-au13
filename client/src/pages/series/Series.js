@@ -19,7 +19,7 @@ function Series() {
 
     console.log({ genreToId });
     const { data } = await axios.get(
-      `http://localhost:3000/tv/get?page=${page}&genre=${genreToId}`
+      `https://movie-app-rajesh.herokuapp.com/tv/get?page=${page}&genre=${genreToId}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);

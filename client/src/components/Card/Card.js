@@ -38,9 +38,9 @@ function Card({
     let findId = e.target.id;
 
     const fetchData = findId => {
-      axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res => {
+      axios.get(`https://movie-app-rajesh.herokuapp.com/${e.target.getAttribute("media")}/get/${findId}`).then(res => {
         axios.post(
-          `http://localhost:3000/user/profile/postfavorites/${email}`,
+          `https://movie-app-rajesh.herokuapp.com/user/profile/postfavorites/${email}`,
           // http://localhost:3000/user/profile/postfavorites/:${email} Also working
           {
             email: email,
@@ -65,9 +65,9 @@ function Card({
     let findId = e.target.id;
     console.log({ findId });
 
-    axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res => 
+    axios.get(`https://movie-app-rajesh.herokuapp.com/${e.target.getAttribute("media")}/get/${findId}`).then(res => 
         axios.post(
-          `http://localhost:3000/user/profile/removefavorites/${email}`,
+          `https://movie-app-rajesh.herokuapp.com/user/profile/removefavorites/${email}`,
           {
             email: email,
             result: res.data.data.id,

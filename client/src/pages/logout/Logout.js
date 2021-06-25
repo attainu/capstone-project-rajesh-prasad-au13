@@ -9,7 +9,7 @@ const Logout = () => {
     sessionStorage.removeItem("token");
     sessionStorage.removeItem("email");
 
-    await axios.get(`http://localhost:3000/logout`);
+    await axios.get(`https://movie-app-rajesh.herokuapp.com/logout`);
   };
 
   useEffect(() => {

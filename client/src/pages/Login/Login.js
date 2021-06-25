@@ -19,7 +19,7 @@ function Login() {
 
     axios
       .post(
-        "/login",
+        "https://movie-app-rajesh.herokuapp.com/login",
         {
           emailid: email,
           password: password,
