@@ -92,7 +92,7 @@ const Search = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    const search_url = `https://api.themoviedb.org/3/search/movie?api_key=433b72bbcc8a78f3b6d6d48b30491675&page=${page}&query=${searchWord}`;
+    const search_url = `http://localhost:3000org/3/search/movie?api_key=${process.env.API_KEY}&page=${page}&query=${searchWord}`;
     console.log(list);
     fetchData(search_url);
     console.log(list);
@@ -100,7 +100,7 @@ const Search = () => {
 
   useEffect(() => {
     window.scroll(0, 0);
-    const search_url = `https://api.themoviedb.org/3/search/movie?api_key=433b72bbcc8a78f3b6d6d48b30491675&page=${page}&query=${searchWord}`;
+    const search_url = `http://localhost:3000/org/3/search/movie?api_key=${process.env.API_KEY}&page=${page}&query=${searchWord}`;
     fetchData(search_url);
     // eslint-disable-next-line
   }, [page]);

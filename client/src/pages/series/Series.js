@@ -19,7 +19,7 @@ function Series() {
 
     console.log({ genreToId });
     const { data } = await axios.get(
-      `https://movie-app-rajesh.herokuapp.com/tv/get?page=${page}&genre=${genreToId}`
+      `http://localhost:3000/tv/get?page=${page}&genre=${genreToId}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);
@@ -58,16 +58,16 @@ function Series() {
               media_type={media_type}
               vote_average={l.vote_average}
               overview={l.overview}
-              
+
             />
           ))
         ) : (
           <SimpleBackdrop open={true} />
         )}
       </div>
-        <div className="pagination">
-          <CustomPagination setPage={setPage} totalPages={totalPages} />
-        </div>
+      <div className="pagination">
+        <CustomPagination setPage={setPage} totalPages={totalPages} />
+      </div>
     </>
   );
 }

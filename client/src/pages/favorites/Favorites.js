@@ -15,7 +15,7 @@ const Favorites = () => {
   const fetchData = async () => {
     let email = sessionStorage.getItem("email");
     const { data } = await axios.get(
-      `https://movie-app-rajesh.herokuapp.com/user/profile/getfavorites/${email}`
+      `http://localhost:3000/user/profile/getfavorites/${email}`
     );
     setTimeout(() => {
       settotalPages(data.total_pages);

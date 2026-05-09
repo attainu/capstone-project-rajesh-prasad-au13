@@ -17,10 +17,10 @@ const Movies = (props) => {
 
   const fetchData = async () => {
     const { data } = await axios.get(
-      `https://movie-app-rajesh.herokuapp.com/movie/get?page=${page}&genre=${genreToId}`
+      `http://localhost:3000/movie/get?page=${page}&genre=${genreToId}`
     );
-      settotalPages(data.total_pages);
-      setlist(data.results);   
+    settotalPages(data.total_pages);
+    setlist(data.results);
   };
 
   useEffect(() => {
@@ -42,27 +42,27 @@ const Movies = (props) => {
         setPage={setPage}
       />
       <div className="title">
-          {list.length !== 0 ? (
-            list.map(l => (
-              <Card
-                isFavorite={false}
-                key={l.id}
-                id={l.id}
-                poster={l.poster_path}
-                title={l.title || l.name}
-                date={l.first_air_date || l.release_date}
-                media_type={media_type}
-                vote_average={l.vote_average}
-                overview={l.overview}
-              />
-            ))
-          ) : (
-            <SimpleBackdrop open={true} />
-          )}
+        {list.length !== 0 ? (
+          list.map(l => (
+            <Card
+              isFavorite={false}
+              key={l.id}
+              id={l.id}
+              poster={l.poster_path}
+              title={l.title || l.name}
+              date={l.first_air_date || l.release_date}
+              media_type={media_type}
+              vote_average={l.vote_average}
+              overview={l.overview}
+            />
+          ))
+        ) : (
+          <SimpleBackdrop open={true} />
+        )}
       </div>
-        <div className="pagination">
-          <CustomPagination setPage={setPage} totalPages={totalPages} />
-        </div>
+      <div className="pagination">
+        <CustomPagination setPage={setPage} totalPages={totalPages} />
+      </div>
     </>
   );
 };

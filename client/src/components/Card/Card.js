@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import "./Card.css";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import axios from "axios";
@@ -38,39 +38,14 @@ function Card({
     let findId = e.target.id;
 
     const fetchData = findId => {
-      axios.get(`https://movie-app-rajesh.herokuapp.com/${e.target.getAttribute("media")}/get/${findId}`).then(res => {
+      axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res => {
         axios.post(
-          `https://movie-app-rajesh.herokuapp.com/user/profile/postfavorites/${email}`,
+          `http://localhost:3000/user/profile/postfavorites/${email}`,
           // http://localhost:3000/user/profile/postfavorites/:${email} Also working
           {
             email: email,
             result: res.data.data,
-            media_type:e.target.getAttribute("media")
-          },
-          {
-            headers: {
-              "Access-Control-Allow-Origin": "*",
-            },
-          }
-        )}
-      );
-    };
-
-    fetchData(findId);
-  };
-  
-  const handleRemoveFav = e => {
-    e.stopPropagation()
-    let email = sessionStorage.getItem("email");
-    let findId = e.target.id;
-    console.log({ findId });
-
-    axios.get(`https://movie-app-rajesh.herokuapp.com/${e.target.getAttribute("media")}/get/${findId}`).then(res => 
-        axios.post(
-          `https://movie-app-rajesh.herokuapp.com/user/profile/removefavorites/${email}`,
-          {
-            email: email,
-            result: res.data.data.id,
+            media_type: e.target.getAttribute("media")
           },
           {
             headers: {
@@ -78,22 +53,48 @@ function Card({
             },
           }
         )
+      }
       );
+    };
+
+    fetchData(findId);
   };
 
-  
+  const handleRemoveFav = e => {
+    e.stopPropagation()
+    let email = sessionStorage.getItem("email");
+    let findId = e.target.id;
+    console.log({ findId });
+
+    axios.get(`http://localhost:3000/${e.target.getAttribute("media")}/get/${findId}`).then(res =>
+      axios.post(
+        `http://localhost:3000/user/profile/removefavorites/${email}`,
+        {
+          email: email,
+          result: res.data.data.id,
+        },
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      )
+    );
+  };
+
+
   return (
     <div className="card" id={id} onClick={handleCardClick}>
       {sessionStorage.getItem("token") && (
-          <div className={isFavorite ? "favorite-tab red" : "favorite-tab"}>
+        <div className={isFavorite ? "favorite-tab red" : "favorite-tab"}>
           <FavoriteIcon id={id} media={media_type} onClick={handleAddFav}>
             Click
           </FavoriteIcon>
-          <CancelIcon media={media_type} id={id} onClick={handleRemoveFav}/>
-          </div>
-        )}
+          <CancelIcon media={media_type} id={id} onClick={handleRemoveFav} />
+        </div>
+      )}
       <div className="card_img">
-        
+
         <div className="vote_average">
           <h2>{vote_average}</h2>
         </div>
@@ -108,7 +109,7 @@ function Card({
         />
       </div>
       <div className="card_details">
-        
+
         <h3>{title}</h3>
         <div>
           <span>{media_type === "tv" ? "TV Series" : "Movie"}</span>

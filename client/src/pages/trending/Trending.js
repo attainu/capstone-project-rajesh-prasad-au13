@@ -13,10 +13,10 @@ function Trending() {
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://movie-app-rajesh.herokuapp.com/trending/today/get?page=${page}`);
+      `http://localhost:3000/trending/today/get?page=${page}`);
 
     console.log("trendingData", data);
-    if(data === null){
+    if (data === null) {
       history.push("/notfound")
     }
     setTimeout(() => {
@@ -45,17 +45,17 @@ function Trending() {
               title={l.title || l.name}
               date={l.first_air_date || l.release_date}
               vote_average={l.vote_average}
-              overview={l.overview}  
-              media_type={l.release_date ? "movie" : "tv"}          
+              overview={l.overview}
+              media_type={l.release_date ? "movie" : "tv"}
             />
           ))
         ) : (
           <SimpleBackdrop open={true} />
         )}
       </div>
-        <div className="pagination">
-          <CustomPagination setPage={setPage} totalPages={totalPages} />
-        </div>
+      <div className="pagination">
+        <CustomPagination setPage={setPage} totalPages={totalPages} />
+      </div>
     </>
   );
 }
